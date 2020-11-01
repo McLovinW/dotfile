@@ -1,0 +1,8 @@
+autoload
+
+.DS_Store
+
+!/bundle/
+/bundle/*
+!/bundle/onedark.vim/
+
