@@ -56,12 +56,14 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]mclovin\[\033[01;31m\]@\[\033[01;33m\]w \[\033[01;34m\]\w\[\033[01;35m\] $ \[\033[00m\]'
+  PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]mclovin\[\033[01;31m\]@\[\033[01;33m\]w \[\033[01;34m\]\w\[\033[01;30m\]\$(__git_ps1 '(%s)')\[\033[01;35m\] \$ \[\033[00m\]"
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]mclovin@w:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
+
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -116,3 +118,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
